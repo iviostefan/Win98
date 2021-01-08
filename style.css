@@ -195,4 +195,14 @@ body, html {
     padding-left: 10px;
 }
 
+.menu {
+    z-index: 1000;
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    position: fixed;
+    top: 50px;
+    left: 10px;
+}
+
 
