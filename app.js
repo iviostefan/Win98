@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.type = type;
         }
 
-        
 
         open() {
             let window = document.createElement("div");
@@ -37,10 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let ul = document.createElement("ul");
             let file = document.createElement("li");
             file.innerHTML = "<u>F</u>ile";
-            file.addEventListener("click", function() {
-               let div = document.createElement("div");
-               div.setAttribute("class", "menu");
-               desktop.appendChild(div);
+            file.addEventListener("click", function () {
+                let div = document.createElement("div");
+                div.setAttribute("class", "menu");
+                desktop.appendChild(div);
             })
             ul.appendChild(file);
             window.appendChild(header);
@@ -66,14 +65,29 @@ document.addEventListener("DOMContentLoaded", function () {
             img.setAttribute("src", this.logo);
             let p = document.createElement("p");
             p.innerHTML = this.name;
+            div.addEventListener("click", function () {
+                //let win = new Window();
+                //win.open();
+                console.log("My Computer");
+
+            })
             div.appendChild(img);
             div.appendChild(p);
             desktop.appendChild(div);
         }
     }
 
-    class Desktop {
+    let icons_names = ["My Computer", "My Documents", "Internet Explorer", "Network", "Recycle Bin"]
+    let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png", 
+    "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
 
+    const Desktop = () => {
+        for (let icon = 0; icon < 5; icon++) {
+            let obj = new Icon(icons_names[icon], logos[icon]);
+            obj.draw();
+        }
     }
+
+    Desktop();
 
 })
