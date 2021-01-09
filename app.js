@@ -28,6 +28,49 @@ document.addEventListener("DOMContentLoaded", function () {
         open() {
             let window = document.createElement("div");
             window.setAttribute("class", "window");
+            window.setAttribute("id", this.type);
+            let wind_content = document.createElement("div");
+            wind_content.setAttribute("class", "wind-content");
+
+            if (this.type === "My Computer") {
+                let imgw = document.createElement("img");
+                imgw.setAttribute("src", "");
+                wind_content.appendChild(imgw);
+
+                let flop = document.createElement("img");
+                flop.setAttribute("src", "");
+                wind_content.appendChild(flop);
+
+                let hdd = document.createElement("img");
+                hdd.setAttribute("src", "");
+                wind_content.appendChild(hdd);
+
+                let cd = document.createElement("img");
+                cd.setAttribute("src", "");
+                wind_content.appendChild(cd);
+
+                let cp = document.createElement("img");
+                cp.setAttribute("src", "");
+                wind_content.appendChild(cp);
+
+            }
+
+            if (this.type === "My Documntes") {
+
+            }
+
+            if (this.type === "Internet Explorer") {
+
+            }
+
+            if (this.type === "Network") {
+
+            }
+
+            if (this.type === "Recycle Bin") {
+
+            }
+
 
 
             let header = document.createElement("div");
