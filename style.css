@@ -170,6 +170,8 @@ body, html {
 
 .window-header {
     background-color: #000080;
+    position: fixed;
+    top: 0;
     width: 100%;
     height: 25px;
     border: 1px solid #fff;
@@ -237,17 +239,13 @@ body, html {
     z-index: 1000;
 }
 
-#taskbar-icons {
-    width: calc(100vw - 150px);
-    height: 20px;
-    position: fixed;
-    left: 60px;
-    display: flex;
-}
+
 
 .window-menu {
     width: 100%;
+    position: fixed;
     height: 22px;
+    top: 27px;
     border: 1px solid #fff;
     background-color: #c0c0c0;
 }
@@ -270,6 +268,8 @@ body, html {
 }
 
 .window-nav {
+    position: fixed;
+    top: 48px;
     width: 100%;
     height: 40px;
     background-color: #c0c0c0;
@@ -277,8 +277,9 @@ body, html {
 }
 
 
-
 .window-address {
+    position: fixed;
+    top: 90px;
     width: 100%;
     height: 22px;
     background-color: #c0c0c0;
@@ -288,20 +289,53 @@ body, html {
     padding-left: 10px;
 }
 
-.menu {
-    z-index: 1000;
-    width: 100px;
-    height: 100px;
-    background-color: blue;
+.wind-content {
     position: fixed;
-    top: 50px;
-    left: 10px;
+    top: 110px;
+    height: calc(100vh - 133px);
+}
+
+.backg-mycom {
+    position: fixed;
+    top: 112px;
+    width: 200px;
+}
+
+.icons-comp {
+    position: fixed;
+    top: 111px;
+    margin-left: 200px;
+    
+}
+.icons-comp img {
+    padding: 5px;
+}
+
+
+#taskbar-icons {
+    width: calc(100vw - 150px);
+    height: 20px;
+    position: fixed;
+    left: 60px;
+    display: flex;
 }
 
 @media (max-width: 400px) {
     .window-nav img {
         width: 300px;
     }
+
+    .wind-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .icons-comp {
+
+        display: inline-block;
+    }
+    
 }
 
 

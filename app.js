@@ -29,34 +29,52 @@ document.addEventListener("DOMContentLoaded", function () {
             let window = document.createElement("div");
             window.setAttribute("class", "window");
             window.setAttribute("id", this.type);
+
+            let wind_adress = document.createElement("div");
+            wind_adress.setAttribute("class", "window-address");
+            window.appendChild(wind_adress);
             let wind_content = document.createElement("div");
             wind_content.setAttribute("class", "wind-content");
 
             if (this.type === "My Computer") {
                 let imgw = document.createElement("img");
-                imgw.setAttribute("src", "");
+                imgw.setAttribute("class", "backg-mycom");
+                imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                 wind_content.appendChild(imgw);
 
+                let list_icons = document.createElement("div");
+                list_icons.setAttribute("class", "icons-comp");
+
                 let flop = document.createElement("img");
-                flop.setAttribute("src", "");
-                wind_content.appendChild(flop);
+                flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
+                list_icons.appendChild(flop);
 
                 let hdd = document.createElement("img");
-                hdd.setAttribute("src", "");
-                wind_content.appendChild(hdd);
+                hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
+                list_icons.appendChild(hdd);
 
                 let cd = document.createElement("img");
-                cd.setAttribute("src", "");
-                wind_content.appendChild(cd);
+                cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
+                list_icons.appendChild(cd);
 
                 let cp = document.createElement("img");
-                cp.setAttribute("src", "");
-                wind_content.appendChild(cp);
+                cp.setAttribute("src", "https://i.ibb.co/28PBBdN/compfcp.png");
+                list_icons.appendChild(cp);
+
+                wind_content.appendChild(list_icons);
+
+                window.appendChild(wind_content);
 
             }
 
             if (this.type === "My Documntes") {
+                let imgw = document.createElement("img");
+                imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
+                wind_content.appendChild(imgw);
 
+                let folder = document.createElement("img");
+                folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
+                wind_content.appendChild(folder);
             }
 
             if (this.type === "Internet Explorer") {
@@ -64,7 +82,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             if (this.type === "Network") {
-
+                let imgw = document.createElement("img");
+                imgw.setAttribute("src", "https://i.ibb.co/TMr2G92/cpfnet.png");
+                wind_content.appendChild(imgw);
             }
 
             if (this.type === "Recycle Bin") {
@@ -131,15 +151,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let ul = document.createElement("ul");
             let file = document.createElement("li");
+            let edit = document.createElement("li");
+            let view = document.createElement("li");
+            let go = document.createElement("li");
+            let favorites = document.createElement("li");
+            let help = document.createElement("li");
             file.innerHTML = "<u>F</u>ile";
-            file.addEventListener("click", function () {
-                let div = document.createElement("div");
-                div.setAttribute("class", "menu");
-                desktop.appendChild(div);
-            })
+            edit.innerHTML = "<u>E</u>dit"
+            view.innerHTML = "<u>V</u>iew"
+            go.innerHTML = "<u>G</u>o"
+            favorites.innerHTML = "<u>F</u>avorites"
+            help.innerHTML = "<u>H</u>elp"
             let nav = document.createElement("div");
             nav.setAttribute("class", "window-nav");
             ul.appendChild(file);
+            ul.appendChild(edit);
+            ul.appendChild(view);
+            ul.appendChild(go);
+            ul.appendChild(favorites);
+            ul.appendChild(help);
             window.appendChild(header);
             win_menu.appendChild(ul);
             win_menu.appendChild(logo);
