@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+    
+    let desktop = document.getElementsByTagName("body")[0];
+
+   // start_logo.setAttribute("src", "");
+   
+
+
     let start = document.getElementById("start");
     let taskbar = document.getElementById("start-bar");
-    let desktop = document.getElementsByTagName("body")[0];
     let start_menu = document.getElementById("start-menu");
 
     start.addEventListener("click", function () {
@@ -119,13 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png",
         "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
 
-    const Desktop = () => {
+
         for (let icon = 0; icon < 5; icon++) {
             let obj = new Icon(icons_names[icon], logos[icon]);
             obj.draw();
         }
-    }
-
-    Desktop();
 
 })
