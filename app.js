@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     let start = document.getElementById("start");
+    let taskbar = document.getElementById("start-bar");
     let desktop = document.getElementsByTagName("body")[0];
     let start_menu = document.getElementById("start-menu");
 
@@ -14,9 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     class Window {
-        constructor(title, type) {
+        constructor(title, type, img) {
             this.title = title;
             this.type = type;
+            this.img = img;
         }
 
 
@@ -25,10 +27,38 @@ document.addEventListener("DOMContentLoaded", function () {
             window.setAttribute("class", "window");
 
             let header = document.createElement("div");
+            let header_img = document.createElement("img");
             header.setAttribute("class", "window-header");
+            header_img.setAttribute("src", this.img);
+
+            let task = document.createElement("div");
+            task.setAttribute("class", "task");
+            task.setAttribute("id", this.type);
+            let task_img = document.createElement("img");
+            task_img.setAttribute("src", this.img)
+            task.appendChild(task_img);
+            taskbar.appendChild(task);
+
+            let close = document.createElement("span");
+            close.setAttribute("class", "header-close");
+            close.innerHTML = "x";
+
+
+
+
+            header.appendChild(header_img);
+            header.appendChild(close);
+
+            let span = document.createElement("span");
+            span.setAttribute("class", "window-header-p");
+
+            span.innerHTML = this.title;
+            header.appendChild(span);
+
 
             let logo = document.createElement("img");
             logo.setAttribute("src", "https://i.ibb.co/4WdrJQ5/logo.png");
+            logo.setAttribute("class", "logo");
 
             let win_menu = document.createElement("div");
             win_menu.setAttribute("class", "window-menu");
@@ -41,11 +71,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 div.setAttribute("class", "menu");
                 desktop.appendChild(div);
             })
+            let nav = document.createElement("div");
+            nav.setAttribute("class", "window-nav");
+            // let img = document.createElement("img");
+            // img.setAttribute("src", "https://i.ibb.co/YP5WHcd/iconswin.png");
+            // nav.appendChild(img);
             ul.appendChild(file);
             window.appendChild(header);
             win_menu.appendChild(ul);
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
+            window.appendChild(nav);
+
+            close.addEventListener("click", function () {
+                let tasks = document.getElementsByClassName("task");
+
+                for (let i = 0; i < tasks.length; i++) {
+                    if (tasks[i].id == span.innerHTML) {
+                        tasks[i].remove();
+                        //console.log(tasks[i]);
+                    }
+                }
+                window.remove();
+            })
             desktop.appendChild(window);
         }
     }
@@ -66,9 +114,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let p = document.createElement("p");
             p.innerHTML = this.name;
             div.addEventListener("click", function () {
-                //let win = new Window();
-                //win.open();
-                console.log("My Computer");
+                let win = new Window(p.innerHTML, p.innerHTML, img.src);
+                win.open();
+
 
             })
             div.appendChild(img);
@@ -78,8 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let icons_names = ["My Computer", "My Documents", "Internet Explorer", "Network", "Recycle Bin"]
-    let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png", 
-    "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
+    let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png",
+        "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
 
     const Desktop = () => {
         for (let icon = 0; icon < 5; icon++) {
