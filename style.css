@@ -67,8 +67,8 @@ body, html {
 }
 
 .task {
-    position: fixed;
-    left: 60px;
+    /* position: fixed;
+    left: 60px; */
     width: 30px;
     bottom: 0px;
     height: 18px;
@@ -231,6 +231,18 @@ body, html {
 
 .minimize {
     display: none;
+}
+
+.zindex {
+    z-index: 1000;
+}
+
+#taskbar-icons {
+    width: calc(100vw - 150px);
+    height: 20px;
+    position: fixed;
+    left: 60px;
+    display: flex;
 }
 
 .window-menu {

@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     let desktop = document.getElementsByTagName("body")[0];
 
-   // start_logo.setAttribute("src", "");
-   
+    // start_logo.setAttribute("src", "");
 
 
     let start = document.getElementById("start");
     let taskbar = document.getElementById("start-bar");
     let start_menu = document.getElementById("start-menu");
+    let task_icons = document.getElementById("taskbar-icons");
 
     start.addEventListener("click", function () {
         if (start_menu.style.display == "none") {
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let window = document.createElement("div");
             window.setAttribute("class", "window");
 
+
             let header = document.createElement("div");
             let header_img = document.createElement("img");
             header.setAttribute("class", "window-header");
@@ -37,14 +38,23 @@ document.addEventListener("DOMContentLoaded", function () {
             let task = document.createElement("div");
             task.setAttribute("class", "task");
             task.setAttribute("id", this.type);
-            task.addEventListener("click", function() {
-               window.classList.toggle("minimize");
-                
+            task.addEventListener("click", function () {
+                if (window.classList.contains("minimize")) {
+                    window.classList.remove("minimize");
+                    window.classList.add("zindex");
+                } else {
+                    window.classList.add("minimize");
+                    window.classList.remove("zindex");
+
+                }
+                //   window.classList.toggle("minimize");
+
+
             })
             let task_img = document.createElement("img");
             task_img.setAttribute("src", this.img)
             task.appendChild(task_img);
-            taskbar.appendChild(task);
+            task_icons.appendChild(task);
 
             let close = document.createElement("span");
             close.setAttribute("class", "header-close");
@@ -93,8 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.appendChild(win_menu);
             window.appendChild(nav);
 
-            min.addEventListener("click", function() {
+            min.addEventListener("click", function () {
                 window.classList.add("minimize");
+                window.classList.remove("zindex");
             })
 
             close.addEventListener("click", function () {
@@ -103,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 for (let i = 0; i < tasks.length; i++) {
                     if (tasks[i].id == span.innerHTML) {
                         tasks[i].remove();
-                        //console.log(tasks[i]);
                     }
                 }
                 window.remove();
@@ -144,9 +154,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
 
 
-        for (let icon = 0; icon < 5; icon++) {
-            let obj = new Icon(icons_names[icon], logos[icon]);
-            obj.draw();
-        }
+    for (let icon = 0; icon < 5; icon++) {
+        let obj = new Icon(icons_names[icon], logos[icon]);
+        obj.draw();
+    }
 
 })
