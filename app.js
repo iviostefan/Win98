@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let task = document.createElement("div");
             task.setAttribute("class", "task");
             task.setAttribute("id", this.type);
+            task.addEventListener("click", function() {
+               window.classList.toggle("minimize");
+                
+            })
             let task_img = document.createElement("img");
             task_img.setAttribute("src", this.img)
             task.appendChild(task_img);
@@ -46,8 +50,18 @@ document.addEventListener("DOMContentLoaded", function () {
             close.setAttribute("class", "header-close");
             close.innerHTML = "x";
 
+            let min = document.createElement("span");
+            min.setAttribute("class", "header-minimize");
+            min.innerHTML = "_";
+
+            let resize = document.createElement("span");
+            resize.setAttribute("class", "header-resize");
+            resize.innerHTML = "◳";
+
             header.appendChild(header_img);
             header.appendChild(close);
+            header.appendChild(min);
+            header.appendChild(resize);
 
             let span = document.createElement("span");
             span.setAttribute("class", "window-header-p");
@@ -78,6 +92,10 @@ document.addEventListener("DOMContentLoaded", function () {
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
             window.appendChild(nav);
+
+            min.addEventListener("click", function() {
+                window.classList.add("minimize");
+            })
 
             close.addEventListener("click", function () {
                 let tasks = document.getElementsByClassName("task");
