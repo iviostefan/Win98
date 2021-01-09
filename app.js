@@ -13,15 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
 
-
     class Window {
         constructor(title, type, img) {
             this.title = title;
             this.type = type;
             this.img = img;
         }
-
-
         open() {
             let window = document.createElement("div");
             window.setAttribute("class", "window");
@@ -43,9 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
             close.setAttribute("class", "header-close");
             close.innerHTML = "x";
 
-
-
-
             header.appendChild(header_img);
             header.appendChild(close);
 
@@ -54,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             span.innerHTML = this.title;
             header.appendChild(span);
-
 
             let logo = document.createElement("img");
             logo.setAttribute("src", "https://i.ibb.co/4WdrJQ5/logo.png");
@@ -73,9 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             let nav = document.createElement("div");
             nav.setAttribute("class", "window-nav");
-            // let img = document.createElement("img");
-            // img.setAttribute("src", "https://i.ibb.co/YP5WHcd/iconswin.png");
-            // nav.appendChild(img);
             ul.appendChild(file);
             window.appendChild(header);
             win_menu.appendChild(ul);
