@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const fill = (number) => number < 10 ? number = "0" + number : number;
+    const getTime = () => {
+        let date = new Date();
+        document.getElementById("taskbar-notification").innerHTML = fill(date.getHours()) + ":" + fill(date.getMinutes());
+    }
 
+    const newLocal = setInterval(getTime, 100);
     let desktop = document.getElementsByTagName("body")[0];
-
-    // start_logo.setAttribute("src", "");
-
-
     let start = document.getElementById("start");
     let taskbar = document.getElementById("start-bar");
     let start_menu = document.getElementById("start-menu");
@@ -72,9 +74,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
                 wind_content.appendChild(imgw);
 
+                let list_icons = document.createElement("div");
+                list_icons.setAttribute("class", "icons-comp");
+
                 let folder = document.createElement("img");
                 folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
-                wind_content.appendChild(folder);
+                list_icons.appendChild(folder);
+                wind_content.appendChild(list_icons);
+
+                window.appendChild(wind_content);
             }
 
             if (this.type === "Internet Explorer") {
