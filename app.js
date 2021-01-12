@@ -35,12 +35,52 @@ document.addEventListener("DOMContentLoaded", function () {
         show() {
             let winderror = document.createElement("div");
             winderror.setAttribute("class", "winderror");
-            winderror.innerHTML = this.title;
+            let headererr = document.createElement("div");
+            headererr.setAttribute("class", "winderror-header");
+            headererr.innerHTML = this.title;
             let closeerr = document.createElement("span");
             closeerr.setAttribute("class", "winderror-close");
             closeerr.innerHTML = "x";
+            headererr.appendChild(closeerr);
+            winderror.appendChild(headererr);
+            let content = document.createElement("div");
+            content.setAttribute("class", "winderror-content");
+            let img = document.createElement("img");
+            img.setAttribute("src", this.img);
+            content.appendChild(img);
+            let mess = document.createElement("div");
+            mess.setAttribute("class", "winderror-mess");
+            mess.innerHTML = this.message;
+            content.appendChild(mess);
+            winderror.appendChild(content);
+            let btns_div = document.createElement("div");
+                if(this.btns === 1) {
+                    btns_div.setAttribute("class", "winderror-button");
+                    let btn = document.createElement("input");
+                    btn.setAttribute("type", "button");
+                    btn.setAttribute("value", "OK");
+                    btns_div.appendChild(btn);
+                } else {
+                    btns_div.setAttribute("class", "winderror-buttons");
+                    let btn1 = document.createElement("input");
+                    let btn2 = document.createElement("input");
+                    btn1.setAttribute("type", "button");
+                    btn1.setAttribute("value", "<b>R</b>etry");
+                    btn2.setAttribute("type", "button");
+                    btn2.setAttribute("value", "<b>C</b>ancel");
+                    btns_div.appendChild(btn1);
+                    btns_div.appendChild(btn2);
+                }
+            winderror.appendChild(btns_div);
+            document.getElementById(this.title).appendChild(winderror);
+            closeerr.addEventListener("click", function() {
+                winderror.remove();
+            })
         }
     }
+
+ 
+
     class Window {
         constructor(title, type, img) {
             this.title = title;
@@ -70,7 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     let flop = document.createElement("img");
                     flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
-
+                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "Casy e sexy", 1);
+                        win.show();
                     })
                     list_icons.appendChild(flop);
                     let hdd = document.createElement("img");
