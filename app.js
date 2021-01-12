@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
         show() {
             let winderror = document.createElement("div");
             winderror.setAttribute("class", "winderror");
+            winderror.innerHTML = this.title;
+            let closeerr = document.createElement("span");
+            closeerr.setAttribute("class", "winderror-close");
+            closeerr.innerHTML = "x";
         }
     }
     class Window {
@@ -66,19 +70,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     let flop = document.createElement("img");
                     flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
-                      
+
                     })
                     list_icons.appendChild(flop);
                     let hdd = document.createElement("img");
                     hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
-                    hdd.addEventListener("click", function() {
+                    hdd.addEventListener("click", function () {
 
                     })
                     list_icons.appendChild(hdd);
                     let cd = document.createElement("img");
                     cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
                     cd.addEventListener("click", function () {
-                     
+
                     })
                     list_icons.appendChild(cd);
                     let cp = document.createElement("img");
