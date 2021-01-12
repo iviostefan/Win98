@@ -24,6 +24,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
     })
+
+    class WindError {
+        constructor(title, img, message, btns) {
+            this.title = title;
+            this.img = img;
+            this.message = message;
+            this.btns = btns;
+        }
+        show() {
+            let winderror = document.createElement("div");
+            winderror.setAttribute("class", )
+        }
+    }
     class Window {
         constructor(title, type, img) {
             this.title = title;
@@ -49,34 +62,34 @@ document.addEventListener("DOMContentLoaded", function () {
             list_icons.setAttribute("class", "icons-comp");
             switch (this.type) {
                 case "My Computer":
-                    let fder = document.createElement("div");
-                    fder.setAttribute("class", "fder");
-                    window.appendChild(fder);
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                     let flop = document.createElement("img");
                     flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
-                    flop.addEventListener("click", function() {
-                        fder.style.display = "block";
-
+                    flop.addEventListener("click", function () {
+                      
                     })
                     list_icons.appendChild(flop);
                     let hdd = document.createElement("img");
                     hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
+                    hdd.addEventListener("click", function() {
+                        
+                    })
                     list_icons.appendChild(hdd);
                     let cd = document.createElement("img");
                     cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
-
+                    cd.addEventListener("click", function () {
+                     
+                    })
                     list_icons.appendChild(cd);
                     let cp = document.createElement("img");
                     cp.setAttribute("src", "https://i.ibb.co/28PBBdN/compfcp.png");
                     list_icons.appendChild(cp);
-                    
                     break;
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
                     let folder = document.createElement("img");
                     folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
-                    folder.addEventListener("click", function() {
+                    folder.addEventListener("click", function () {
                         folder.style.display = "none";
                         let imgs = document.createElement("div");
                         imgs.setAttribute("class", "pictures");
@@ -85,8 +98,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         let img2 = document.createElement("div");
                         img2.setAttribute("class", "thumb2");
                         imgs.appendChild(img1);
-                       imgs.appendChild(img2);
-                       list_icons.appendChild(imgs);
+                        imgs.appendChild(img2);
+                        list_icons.appendChild(imgs);
 
                     })
                     list_icons.appendChild(folder);

@@ -158,8 +158,8 @@ body, html {
     width: 20px;
     bottom: 25px;
     position: fixed;
-    margin-left: 2px solid #fff;
-    margin-top: 1px solid #fff;
+    border-left: 2px solid #fff;
+    border-top: 1px solid #fff;
 }
 
 .icon {
@@ -354,6 +354,23 @@ body, html {
     padding: 5px;
 }
 
+.nofloppy {
+    width: 100px;
+    height: 100px;
+    background-color: rebeccapurple;
+}
+
+
+.nocd {
+    width: 200px;
+    height: 120px;
+    background-color: #c0c0c0;
+    border-left: 2px solid #fff;
+    border-top: 1px solid #fff;
+    position: fixed;
+    top: 40%;
+    margin: auto
+}
 
 #taskbar-icons {
     width: calc(100vw - 150px);
