@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         show() {
             let winderror = document.createElement("div");
-            winderror.setAttribute("class", )
+            winderror.setAttribute("class", "winderror");
         }
     }
     class Window {
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let hdd = document.createElement("img");
                     hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
                     hdd.addEventListener("click", function() {
-                        
+
                     })
                     list_icons.appendChild(hdd);
                     let cd = document.createElement("img");
