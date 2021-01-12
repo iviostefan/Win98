@@ -49,19 +49,28 @@ document.addEventListener("DOMContentLoaded", function () {
             list_icons.setAttribute("class", "icons-comp");
             switch (this.type) {
                 case "My Computer":
+                    let fder = document.createElement("div");
+                    fder.setAttribute("class", "fder");
+                    window.appendChild(fder);
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                     let flop = document.createElement("img");
                     flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
+                    flop.addEventListener("click", function() {
+                        fder.style.display = "block";
+
+                    })
                     list_icons.appendChild(flop);
                     let hdd = document.createElement("img");
                     hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
                     list_icons.appendChild(hdd);
                     let cd = document.createElement("img");
                     cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
+
                     list_icons.appendChild(cd);
                     let cp = document.createElement("img");
                     cp.setAttribute("src", "https://i.ibb.co/28PBBdN/compfcp.png");
                     list_icons.appendChild(cp);
+                    
                     break;
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
