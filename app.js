@@ -45,26 +45,22 @@ document.addEventListener("DOMContentLoaded", function () {
             this.btns = btns;
         }
         show() {
-            let winderror = document.createElement("div");
-            winderror.setAttribute("class", "winderror");
-            let headererr = document.createElement("div");
-            headererr.setAttribute("class", "winderror-header");
+            let winderror = render("div", "class", "winderror");
+            let headererr =  render("div", "class", "winderror-header")
             headererr.innerHTML = this.title;
-            let closeerr = document.createElement("span");
-            closeerr.setAttribute("class", "winderror-close");
+            let closeerr = render("span", "class", "winderror-close");
             closeerr.innerHTML = "x";
             headererr.appendChild(closeerr);
             winderror.appendChild(headererr);
-            let content = document.createElement("div");
-            content.setAttribute("class", "winderror-content");
-            let img = document.createElement("img");
-            img.setAttribute("src", this.img);
+            let content = render("div", "class", "winderror-content");
+            let img = render("img", "src", this.img);
             content.appendChild(img);
             let mess = document.createElement("div");
             mess.setAttribute("class", "winderror-mess");
             mess.innerHTML = this.message;
             content.appendChild(mess);
             winderror.appendChild(content);
+
             let btns_div = document.createElement("div");
             if (this.btns === 1) {
                 btns_div.setAttribute("class", "winderror-button");
@@ -101,6 +97,11 @@ document.addEventListener("DOMContentLoaded", function () {
             let window = document.createElement("div");
             window.setAttribute("class", "window");
             window.setAttribute("id", this.type);
+
+
+            let window = render("div", "class", "window");
+
+            
             let header = document.createElement("div");
             let header_img = document.createElement("img");
             header.setAttribute("class", "window-header");
