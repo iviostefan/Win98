@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let btn2 = document.createElement("button");
                 btn1.innerHTML = "<u>R</u>etry";
                 btn2.innerHTML = "<b>C</b>ancel";
-                btn2.addEventListener("click", function() {
+                btn2.addEventListener("click", function () {
                     winderror.remove();
                 })
                 btns_div.appendChild(btn1);
@@ -78,8 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         }
     }
-
-
 
     class Window {
         constructor(title, type, img) {
@@ -117,6 +115,25 @@ document.addEventListener("DOMContentLoaded", function () {
                     let hdd = document.createElement("img");
                     hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
                     hdd.addEventListener("click", function () {
+                        list_icons.style.display = "none";
+                        let list_icons2 = document.createElement("div");
+                        list_icons2.setAttribute("class", "icons-comp");
+                        let mydoc = document.createElement("img");
+                        mydoc.setAttribute("src", "https://i.ibb.co/DDnMr4K/docs-icon.png");
+                        list_icons2.appendChild(mydoc);
+                        let pf = document.createElement("img");
+                        pf.setAttribute("src", "https://i.ibb.co/rsvF7g4/pf-icon.png");
+                        list_icons2.appendChild(pf);
+                        let win = document.createElement("img");
+                        win.setAttribute("src", "https://i.ibb.co/jwZ3dm1/wind-icon.png");
+                        list_icons2.appendChild(win);
+                        let ax = document.createElement("img");
+                        ax.setAttribute("src", "https://i.ibb.co/PcZ8hjG/ax-ico.png");
+                        list_icons2.appendChild(ax);
+                        let ax2 = document.createElement("img");
+                        ax2.setAttribute("src", "https://i.ibb.co/BnxjzzJ/ax2-ico.png");
+                        list_icons2.appendChild(ax2);
+                        wind_content.appendChild(list_icons2);
 
                     })
                     list_icons.appendChild(hdd);
