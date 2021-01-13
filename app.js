@@ -54,32 +54,32 @@ document.addEventListener("DOMContentLoaded", function () {
             content.appendChild(mess);
             winderror.appendChild(content);
             let btns_div = document.createElement("div");
-                if(this.btns === 1) {
-                    btns_div.setAttribute("class", "winderror-button");
-                    let btn = document.createElement("input");
-                    btn.setAttribute("type", "button");
-                    btn.setAttribute("value", "OK");
-                    btns_div.appendChild(btn);
-                } else {
-                    btns_div.setAttribute("class", "winderror-buttons");
-                    let btn1 = document.createElement("input");
-                    let btn2 = document.createElement("input");
-                    btn1.setAttribute("type", "button");
-                    btn1.setAttribute("value", "<b>R</b>etry");
-                    btn2.setAttribute("type", "button");
-                    btn2.setAttribute("value", "<b>C</b>ancel");
-                    btns_div.appendChild(btn1);
-                    btns_div.appendChild(btn2);
-                }
+            if (this.btns === 1) {
+                btns_div.setAttribute("class", "winderror-button");
+                let btn = document.createElement("button");
+                btn.innerHTML = "OK";
+                btns_div.appendChild(btn);
+            } else {
+                btns_div.setAttribute("class", "winderror-buttons");
+                let btn1 = document.createElement("button");
+                let btn2 = document.createElement("button");
+                btn1.innerHTML = "<u>R</u>etry";
+                btn2.innerHTML = "<b>C</b>ancel";
+                btn2.addEventListener("click", function() {
+                    winderror.remove();
+                })
+                btns_div.appendChild(btn1);
+                btns_div.appendChild(btn2);
+            }
             winderror.appendChild(btns_div);
             document.getElementById(this.title).appendChild(winderror);
-            closeerr.addEventListener("click", function() {
+            closeerr.addEventListener("click", function () {
                 winderror.remove();
             })
         }
     }
 
- 
+
 
     class Window {
         constructor(title, type, img) {
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let flop = document.createElement("img");
                     flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
-                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "Casy e sexy", 1);
+                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
                     })
                     list_icons.appendChild(flop);
@@ -123,7 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     let cd = document.createElement("img");
                     cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
                     cd.addEventListener("click", function () {
-
+                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
+                        win.show();
                     })
                     list_icons.appendChild(cd);
                     let cp = document.createElement("img");
