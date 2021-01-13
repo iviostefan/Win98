@@ -25,6 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
 
+    let render = (type, attr, value) => {
+        let obj = document.createElement(type);
+        obj.setAttribute(attr, value);
+        return obj;
+    }
+
+    let node = (type, text) => {
+        let obj = document.createElement(type);
+        obj.innerHTML = text;
+        return obj;
+    }
+
     class WindError {
         constructor(title, img, message, btns) {
             this.title = title;
@@ -95,6 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
             header_img.setAttribute("src", this.img);
             let wind_adress = document.createElement("div");
             wind_adress.setAttribute("class", "window-address");
+            wind_adress.innerHTML = "A<u>d</u>dress";
+            let add_sec = document.createElement("div");
+            add_sec.setAttribute("class", "addbar");
+            let add_img = document.createElement("img");
+            add_img.setAttribute("src", this.img);
+            add_sec.appendChild(add_img);
+            add_sec.innerHTML = this.type;
+            wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
             let wind_content = document.createElement("div");
             wind_content.setAttribute("class", "wind-content");
@@ -189,44 +209,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     window.classList.add("minimize");
                     window.classList.remove("zindex");
-
                 }
             })
             let task_img = document.createElement("img");
             task_img.setAttribute("src", this.img)
             task.appendChild(task_img);
             task_icons.appendChild(task);
-
             let close = document.createElement("span");
             close.setAttribute("class", "header-close");
             close.innerHTML = "x";
-
             let min = document.createElement("span");
             min.setAttribute("class", "header-minimize");
             min.innerHTML = "_";
-
             let resize = document.createElement("span");
             resize.setAttribute("class", "header-resize");
             resize.innerHTML = "◳";
-
             header.appendChild(header_img);
             header.appendChild(close);
             header.appendChild(min);
             header.appendChild(resize);
-
             let span = document.createElement("span");
             span.setAttribute("class", "window-header-p");
-
             span.innerHTML = this.title;
             header.appendChild(span);
-
             let logo = document.createElement("img");
             logo.setAttribute("src", "https://i.ibb.co/4WdrJQ5/logo.png");
             logo.setAttribute("class", "logo");
-
             let win_menu = document.createElement("div");
             win_menu.setAttribute("class", "window-menu");
-
             let ul = document.createElement("ul");
             let file = document.createElement("li");
             let edit = document.createElement("li");
@@ -242,6 +252,23 @@ document.addEventListener("DOMContentLoaded", function () {
             help.innerHTML = "<u>H</u>elp"
             let nav = document.createElement("div");
             nav.setAttribute("class", "window-nav");
+            // let img1 = document.createElement("img");
+            // img.setAttribute("src", "");
+            // let img2 = document.createElement("img");
+            // let img3 = document.createElement("img");
+            // let img4 = document.createElement("img");
+            // let img5 = document.createElement("img");
+            // let img6 = document.createElement("img");
+            // let img7 = document.createElement("img");
+            // let img8 = document.createElement("img");
+            // let img9 = document.createElement("img");
+            // let img10 = document.createElement("img");
+            // let img11 = document.createElement("img");
+            // let img12 = document.createElement("img");
+            // let img13 = document.createElement("img");
+            // let img14 = document.createElement("img");
+            // let img15 = document.createElement("img");
+            // let img16 = document.createElement("img");
             ul.appendChild(file);
             ul.appendChild(edit);
             ul.appendChild(view);
@@ -253,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function () {
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
             window.appendChild(nav);
-
             min.addEventListener("click", function () {
                 window.classList.add("minimize");
                 window.classList.remove("zindex");
@@ -279,12 +305,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.logo = logo;
         }
         draw() {
-            let div = document.createElement("div");
-            div.setAttribute("class", "icon");
-            let img = document.createElement("img");
-            img.setAttribute("src", this.logo);
-            let p = document.createElement("p");
-            p.innerHTML = this.name;
+            let div = render("div", "class", "icon"),
+                img = render("img", "src", this.logo),
+                p = node("p", this.name);
             div.addEventListener("click", function () {
                 let win = new Window(p.innerHTML, p.innerHTML, img.src);
                 win.open();
