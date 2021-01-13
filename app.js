@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("taskbar-notification").innerHTML = fill(date.getHours()) + ":" + fill(date.getMinutes());
     }
     setInterval(getTime, 100);
+
     let desktop = document.getElementById("win98");
     let start = document.getElementById("start");
     let taskbar = document.getElementById("start-bar");
@@ -25,13 +26,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
 
-    let render = (type, attr, value) => {
+    let Render = (type, attr, value) => {
         let obj = document.createElement(type);
         obj.setAttribute(attr, value);
         return obj;
     }
 
-    let node = (type, text) => {
+    let Image = (value) => {
+        let obj = document.createElement("img");
+        obj.setAttribute("src", value);
+        return obj;
+    }
+
+    let Div = (value1, value2) => {
+        let obj = document.createElement("div");
+        obj.setAttribute("class", value1);
+        value2 == null ? obj.setAttribute("class", value1) : obj.setAttribute("id", value2);
+        return obj;
+    }
+
+    let Node = (type, text) => {
         let obj = document.createElement(type);
         obj.innerHTML = text;
         return obj;
@@ -45,15 +59,16 @@ document.addEventListener("DOMContentLoaded", function () {
             this.btns = btns;
         }
         show() {
-            let winderror = render("div", "class", "winderror");
-            let headererr =  render("div", "class", "winderror-header")
+            //let winderror = render("div", "class", "winderror");
+            let winderror = Div("winderror");
+            let headererr = Div("winderror-header");
             headererr.innerHTML = this.title;
-            let closeerr = render("span", "class", "winderror-close");
+            let closeerr = Render("span", "class", "winderror-close");
             closeerr.innerHTML = "x";
             headererr.appendChild(closeerr);
             winderror.appendChild(headererr);
-            let content = render("div", "class", "winderror-content");
-            let img = render("img", "src", this.img);
+            let content = Div("winderror-content");
+            let img = Image(this.img);
             content.appendChild(img);
             let mess = document.createElement("div");
             mess.setAttribute("class", "winderror-mess");
@@ -94,21 +109,25 @@ document.addEventListener("DOMContentLoaded", function () {
             this.img = img;
         }
         open() {
-            let window = document.createElement("div");
-            window.setAttribute("class", "window");
-            window.setAttribute("id", this.type);
 
 
-            let window = render("div", "class", "window");
+            let window = Div("window", this.type);
 
-            
-            let header = document.createElement("div");
-            let header_img = document.createElement("img");
-            header.setAttribute("class", "window-header");
-            header_img.setAttribute("src", this.img);
-            let wind_adress = document.createElement("div");
-            wind_adress.setAttribute("class", "window-address");
+
+            let header = Div("window-header");
+
+
+            let header_img = Image(this.img);
+
+
+
+            // let wind_adress = document.createElement("div");
+            // wind_adress.setAttribute("class", "window-address");
+
+            let wind_adress = Div("window-address");
+
             wind_adress.innerHTML = "A<u>d</u>dress";
+
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
             let add_img = document.createElement("img");
@@ -117,12 +136,12 @@ document.addEventListener("DOMContentLoaded", function () {
             add_sec.innerHTML = this.type;
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
-            let wind_content = document.createElement("div");
-            wind_content.setAttribute("class", "wind-content");
-            let imgw = document.createElement("img");
-            imgw.setAttribute("class", "backg-mycom");
-            let list_icons = document.createElement("div");
-            list_icons.setAttribute("class", "icons-comp");
+
+
+            let wind_content = Div("wind-content");
+            let imgw = Render("img", "class", "backg-mycom");
+            let list_icons = Div("icons-comp");
+
             switch (this.type) {
                 case "My Computer":
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
@@ -131,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     flop.addEventListener("click", function () {
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
+                        console.log("flopp");
                     })
                     list_icons.appendChild(flop);
                     let hdd = document.createElement("img");
@@ -171,8 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     break;
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
-                    let folder = document.createElement("img");
-                    folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
+                    // let folder = document.createElement("img");
+                    // folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
+
+                    let folder = Image("https://i.ibb.co/bJSCHnV/mypicico.png");
                     folder.addEventListener("click", function () {
                         folder.style.display = "none";
                         let imgs = document.createElement("div");
@@ -200,9 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
             wind_content.appendChild(list_icons);
             window.appendChild(wind_content);
 
-            let task = document.createElement("div");
-            task.setAttribute("class", "task");
-            task.setAttribute("id", this.type);
+            let task = Div("task", this.type);
             task.addEventListener("click", function () {
                 if (window.classList.contains("minimize")) {
                     window.classList.remove("minimize");
@@ -212,8 +232,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.classList.remove("zindex");
                 }
             })
-            let task_img = document.createElement("img");
-            task_img.setAttribute("src", this.img)
+
+            // let task_img = document.createElement("img");
+            // task_img.setAttribute("src", this.img);
+
+            let task_img = Image(this.img);
             task.appendChild(task_img);
             task_icons.appendChild(task);
             let close = document.createElement("span");
@@ -306,9 +329,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.logo = logo;
         }
         draw() {
-            let div = render("div", "class", "icon"),
-                img = render("img", "src", this.logo),
-                p = node("p", this.name);
+            let div = Div("icon"),
+                img = Image(this.logo),
+                p = Node("p", this.name);
             div.addEventListener("click", function () {
                 let win = new Window(p.innerHTML, p.innerHTML, img.src);
                 win.open();
@@ -323,10 +346,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png",
         "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
 
-
     for (let icon = 0; icon < 5; icon++) {
         let obj = new Icon(icons_names[icon], logos[icon]);
         obj.draw();
     }
-
 })
