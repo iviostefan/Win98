@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let desktop = document.getElementById("win98");
     let start = document.getElementById("start");
-    let taskbar = document.getElementById("start-bar");
+    //let taskbar = document.getElementById("start-bar");
     let start_menu = document.getElementById("start-menu");
     let task_icons = document.getElementById("taskbar-icons");
     start.addEventListener("click", function () {
@@ -109,31 +109,21 @@ document.addEventListener("DOMContentLoaded", function () {
             this.img = img;
         }
         open() {
-
-
             let window = Div("window", this.type);
-
-
             let header = Div("window-header");
-
-
             let header_img = Image(this.img);
 
-
-
-            // let wind_adress = document.createElement("div");
-            // wind_adress.setAttribute("class", "window-address");
-
             let wind_adress = Div("window-address");
-
             wind_adress.innerHTML = "A<u>d</u>dress";
-
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
+
             let add_img = document.createElement("img");
             add_img.setAttribute("src", this.img);
             add_sec.appendChild(add_img);
+
             add_sec.innerHTML = this.type;
+
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
 
@@ -145,68 +135,46 @@ document.addEventListener("DOMContentLoaded", function () {
             switch (this.type) {
                 case "My Computer":
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
-                    let flop = document.createElement("img");
-                    flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
+                    // let flop = document.createElement("img");
+                    // flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
+
+                    let flop = Image("https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
-                        console.log("flopp");
                     })
                     list_icons.appendChild(flop);
-                    let hdd = document.createElement("img");
-                    hdd.setAttribute("src", "https://i.ibb.co/8Dfv2Vy/comfc.png");
+
+                    let hdd = Image("https://i.ibb.co/8Dfv2Vy/comfc.png");
                     hdd.addEventListener("click", function () {
                         list_icons.style.display = "none";
-                        let list_icons2 = document.createElement("div");
-                        list_icons2.setAttribute("class", "icons-comp");
-                        let mydoc = document.createElement("img");
-                        mydoc.setAttribute("src", "https://i.ibb.co/DDnMr4K/docs-icon.png");
-                        list_icons2.appendChild(mydoc);
-                        let pf = document.createElement("img");
-                        pf.setAttribute("src", "https://i.ibb.co/rsvF7g4/pf-icon.png");
-                        list_icons2.appendChild(pf);
-                        let win = document.createElement("img");
-                        win.setAttribute("src", "https://i.ibb.co/jwZ3dm1/wind-icon.png");
-                        list_icons2.appendChild(win);
-                        let ax = document.createElement("img");
-                        ax.setAttribute("src", "https://i.ibb.co/PcZ8hjG/ax-ico.png");
-                        list_icons2.appendChild(ax);
-                        let ax2 = document.createElement("img");
-                        ax2.setAttribute("src", "https://i.ibb.co/BnxjzzJ/ax2-ico.png");
-                        list_icons2.appendChild(ax2);
+                        let list_icons2 = Div("icons-comp");
+                        list_icons2.appendChild(Image("https://i.ibb.co/DDnMr4K/docs-icon.png"));
+                        list_icons2.appendChild(Image("https://i.ibb.co/rsvF7g4/pf-icon.png"));
+                        list_icons2.appendChild(Image("https://i.ibb.co/jwZ3dm1/wind-icon.png"));
+                        list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
+                        list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
                         wind_content.appendChild(list_icons2);
-
                     })
                     list_icons.appendChild(hdd);
-                    let cd = document.createElement("img");
-                    cd.setAttribute("src", "https://i.ibb.co/mq7c1jn/compfcd.png");
+                    let cd = Image("https://i.ibb.co/mq7c1jn/compfcd.png");
                     cd.addEventListener("click", function () {
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
                     })
                     list_icons.appendChild(cd);
-                    let cp = document.createElement("img");
-                    cp.setAttribute("src", "https://i.ibb.co/28PBBdN/compfcp.png");
-                    list_icons.appendChild(cp);
+                  //  let cp = Image("https://i.ibb.co/28PBBdN/compfcp.png");
+                    list_icons.appendChild(Image("https://i.ibb.co/28PBBdN/compfcp.png"));
                     break;
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
-                    // let folder = document.createElement("img");
-                    // folder.setAttribute("src", "https://i.ibb.co/bJSCHnV/mypicico.png");
-
                     let folder = Image("https://i.ibb.co/bJSCHnV/mypicico.png");
                     folder.addEventListener("click", function () {
                         folder.style.display = "none";
-                        let imgs = document.createElement("div");
-                        imgs.setAttribute("class", "pictures");
-                        let img1 = document.createElement("div");
-                        img1.setAttribute("class", "thumb1");
-                        let img2 = document.createElement("div");
-                        img2.setAttribute("class", "thumb2");
-                        imgs.appendChild(img1);
-                        imgs.appendChild(img2);
+                        let imgs = Div("pictures");
+                        imgs.appendChild(Div("thumb1"));
+                        imgs.appendChild(Div("thumb2"));
                         list_icons.appendChild(imgs);
-
                     })
                     list_icons.appendChild(folder);
                     break;
@@ -232,50 +200,41 @@ document.addEventListener("DOMContentLoaded", function () {
                     window.classList.remove("zindex");
                 }
             })
-
-            // let task_img = document.createElement("img");
-            // task_img.setAttribute("src", this.img);
-
             let task_img = Image(this.img);
             task.appendChild(task_img);
             task_icons.appendChild(task);
-            let close = document.createElement("span");
-            close.setAttribute("class", "header-close");
+            let close = Render("span", "class", "header-close");
             close.innerHTML = "x";
-            let min = document.createElement("span");
-            min.setAttribute("class", "header-minimize");
-            min.innerHTML = "_";
-            let resize = document.createElement("span");
-            resize.setAttribute("class", "header-resize");
-            resize.innerHTML = "◳";
-            header.appendChild(header_img);
             header.appendChild(close);
+            let min = Render("span", "class","header-minimize");
+            min.innerHTML = "_";
             header.appendChild(min);
+            let resize = Render("span", "class","header-resize");
+            resize.innerHTML = "◳";
             header.appendChild(resize);
-            let span = document.createElement("span");
-            span.setAttribute("class", "window-header-p");
+            header.appendChild(header_img);
+            let span =  Render("span", "class","window-header-p");
             span.innerHTML = this.title;
             header.appendChild(span);
-            let logo = document.createElement("img");
-            logo.setAttribute("src", "https://i.ibb.co/4WdrJQ5/logo.png");
+            let logo = Image("https://i.ibb.co/4WdrJQ5/logo.png");
             logo.setAttribute("class", "logo");
-            let win_menu = document.createElement("div");
-            win_menu.setAttribute("class", "window-menu");
+            let win_menu = Div("window-menu");
             let ul = document.createElement("ul");
-            let file = document.createElement("li");
-            let edit = document.createElement("li");
-            let view = document.createElement("li");
-            let go = document.createElement("li");
-            let favorites = document.createElement("li");
-            let help = document.createElement("li");
-            file.innerHTML = "<u>F</u>ile";
-            edit.innerHTML = "<u>E</u>dit"
-            view.innerHTML = "<u>V</u>iew"
-            go.innerHTML = "<u>G</u>o"
-            favorites.innerHTML = "<u>F</u>avorites"
-            help.innerHTML = "<u>H</u>elp"
-            let nav = document.createElement("div");
-            nav.setAttribute("class", "window-nav");
+            let file = Node("li", "<u>F</u>ile");
+            ul.appendChild(file);
+            let edit = Node("li", "<u>E</u>dit");
+            ul.appendChild(edit);
+            let view = Node("li", "<u>V</u>iew");
+            ul.appendChild(view);
+            let go = Node("li", "<u>G</u>o");
+            ul.appendChild(go);
+            let favorites = Node("li", "<u>F</u>avorites");
+            ul.appendChild(favorites);
+            let help = Node("li", "<u>H</u>elp");
+            ul.appendChild(help);
+            win_menu.appendChild(ul);
+            
+            let nav = Div("window-nav");
             // let img1 = document.createElement("img");
             // img.setAttribute("src", "");
             // let img2 = document.createElement("img");
@@ -293,14 +252,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // let img14 = document.createElement("img");
             // let img15 = document.createElement("img");
             // let img16 = document.createElement("img");
-            ul.appendChild(file);
-            ul.appendChild(edit);
-            ul.appendChild(view);
-            ul.appendChild(go);
-            ul.appendChild(favorites);
-            ul.appendChild(help);
+            
             window.appendChild(header);
-            win_menu.appendChild(ul);
+            
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
             window.appendChild(nav);
@@ -308,10 +262,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 window.classList.add("minimize");
                 window.classList.remove("zindex");
             })
-
             close.addEventListener("click", function () {
                 let tasks = document.getElementsByClassName("task");
-
                 for (let i = 0; i < tasks.length; i++) {
                     if (tasks[i].id == span.innerHTML) {
                         tasks[i].remove();
