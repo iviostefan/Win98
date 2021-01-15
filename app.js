@@ -118,11 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
 
-            let add_img = document.createElement("img");
-            add_img.setAttribute("src", this.img);
+            let add_img = Image(this.img);
             add_sec.appendChild(add_img);
 
-            add_sec.innerHTML = this.type;
+         //   add_sec.innerHTML = this.type;
 
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
@@ -135,16 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
             switch (this.type) {
                 case "My Computer":
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
-                    // let flop = document.createElement("img");
-                    // flop.setAttribute("src", "https://i.ibb.co/WkSxgbm/mycomff.png");
-
                     let flop = Image("https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
                     })
                     list_icons.appendChild(flop);
-
                     let hdd = Image("https://i.ibb.co/8Dfv2Vy/comfc.png");
                     hdd.addEventListener("click", function () {
                         list_icons.style.display = "none";
@@ -163,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         win.show();
                     })
                     list_icons.appendChild(cd);
-                  //  let cp = Image("https://i.ibb.co/28PBBdN/compfcp.png");
                     list_icons.appendChild(Image("https://i.ibb.co/28PBBdN/compfcp.png"));
                     break;
                 case "My Documents":
