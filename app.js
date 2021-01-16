@@ -117,12 +117,10 @@ document.addEventListener("DOMContentLoaded", function () {
             wind_adress.innerHTML = "A<u>d</u>dress";
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
-
             let add_img = Image(this.img);
             add_sec.appendChild(add_img);
-
-         //   add_sec.innerHTML = this.type;
-
+            let add = Node("span", this.type);
+            add_sec.appendChild(add);
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
 

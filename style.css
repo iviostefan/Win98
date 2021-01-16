@@ -363,6 +363,13 @@ body, html {
     top: -1px;
 }
 
+.addbar span {
+    font-size: 12px;
+    position: relative;
+    left: -10px;
+    top: 2px;
+}
+
 .window-address span {
     padding-left: 10px;
 }
