@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let desktop = document.getElementById("win98");
     let start = document.getElementById("start");
-    //let taskbar = document.getElementById("start-bar");
     let start_menu = document.getElementById("start-menu");
     let task_icons = document.getElementById("taskbar-icons");
     start.addEventListener("click", function () {
@@ -114,8 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let header_img = Image(this.img);
 
             let wind_adress = Div("window-address");
-            let b = Image("https://i.ibb.co/Lh91Zjh/nav-bars.png");
-        //    wind_adress.appendChild(b);
             wind_adress.innerHTML = "A<u>d</u>dress";
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
@@ -213,7 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
             let logo = Image("https://i.ibb.co/4WdrJQ5/logo.png");
             logo.setAttribute("class", "logo");
             let win_menu = Div("window-menu");
+            
             let ul = document.createElement("ul");
+
             let file = Node("li", "<u>F</u>ile");
             ul.appendChild(file);
             let edit = Node("li", "<u>E</u>dit");
