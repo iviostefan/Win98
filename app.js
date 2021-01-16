@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("taskbar-notification").innerHTML = fill(date.getHours()) + ":" + fill(date.getMinutes());
     }
     setInterval(getTime, 100);
-
+    let is_error = false;
     let desktop = document.getElementById("win98");
     let start = document.getElementById("start");
     let start_menu = document.getElementById("start-menu");
@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.btns = btns;
         }
         show() {
-            //let winderror = render("div", "class", "winderror");
             let winderror = Div("winderror");
             let headererr = Div("winderror-header");
             headererr.innerHTML = this.title;
@@ -89,14 +88,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 btn2.innerHTML = "<b>C</b>ancel";
                 btn2.addEventListener("click", function () {
                     winderror.remove();
+                    is_error = false;
                 })
                 btns_div.appendChild(btn1);
                 btns_div.appendChild(btn2);
             }
             winderror.appendChild(btns_div);
-            document.getElementById(this.title).appendChild(winderror);
+            desktop.appendChild(winderror);
+            console.log(document.getElementById(this.title));
             closeerr.addEventListener("click", function () {
                 winderror.remove();
+                is_error = false;
             })
         }
     }
@@ -108,6 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.img = img;
         }
         open() {
+            
             let window = Div("window", this.type);
             let header = Div("window-header");
             let header_img = Image(this.img);
@@ -133,6 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                     let flop = Image("https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
+                        console.log("click flop");
+                        is_error = true;
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
                     })
@@ -151,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     list_icons.appendChild(hdd);
                     let cd = Image("https://i.ibb.co/mq7c1jn/compfcd.png");
                     cd.addEventListener("click", function () {
+                        is_error = true;
                         let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
                         win.show();
                     })
@@ -183,12 +189,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let task = Div("task", this.type);
             task.addEventListener("click", function () {
-                if (window.classList.contains("minimize")) {
-                    window.classList.remove("minimize");
-                    window.classList.add("zindex");
-                } else {
-                    window.classList.add("minimize");
-                    window.classList.remove("zindex");
+                if (!is_error) {
+                    if (window.classList.contains("minimize")) {
+                        window.classList.remove("minimize");
+                        window.classList.add("zindex");
+                    } else {
+                        window.classList.add("minimize");
+                        window.classList.remove("zindex");
+                    }
                 }
             })
             let task_img = Image(this.img);
@@ -197,20 +205,20 @@ document.addEventListener("DOMContentLoaded", function () {
             let close = Render("span", "class", "header-close");
             close.innerHTML = "x";
             header.appendChild(close);
-            let min = Render("span", "class","header-minimize");
+            let min = Render("span", "class", "header-minimize");
             min.innerHTML = "_";
             header.appendChild(min);
-            let resize = Render("span", "class","header-resize");
+            let resize = Render("span", "class", "header-resize");
             resize.innerHTML = "◳";
             header.appendChild(resize);
             header.appendChild(header_img);
-            let span =  Render("span", "class","window-header-p");
+            let span = Render("span", "class", "window-header-p");
             span.innerHTML = this.title;
             header.appendChild(span);
             let logo = Image("https://i.ibb.co/4WdrJQ5/logo.png");
             logo.setAttribute("class", "logo");
             let win_menu = Div("window-menu");
-            
+
             let ul = document.createElement("ul");
 
             let file = Node("li", "<u>F</u>ile");
@@ -226,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let help = Node("li", "<u>H</u>elp");
             ul.appendChild(help);
             win_menu.appendChild(ul);
-            
+
             let nav = Div("window-nav");
             let n1 = Image("https://i.ibb.co/ZWk35Mc/back.png");
             let n2 = Image("https://i.ibb.co/f2YhpRH/nav-for.png");
@@ -256,24 +264,29 @@ document.addEventListener("DOMContentLoaded", function () {
             nav.appendChild(n9);
             nav.appendChild(b4);
             nav.appendChild(n10);
-            
+
             window.appendChild(header);
-            
+
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
             window.appendChild(nav);
             min.addEventListener("click", function () {
-                window.classList.add("minimize");
-                window.classList.remove("zindex");
+                if (!is_error) {
+                    window.classList.add("minimize");
+                    window.classList.remove("zindex");
+                }
             })
             close.addEventListener("click", function () {
-                let tasks = document.getElementsByClassName("task");
-                for (let i = 0; i < tasks.length; i++) {
-                    if (tasks[i].id == span.innerHTML) {
-                        tasks[i].remove();
+                if (!is_error) {
+                    let tasks = document.getElementsByClassName("task");
+                    for (let i = 0; i < tasks.length; i++) {
+                        if (tasks[i].id == span.innerHTML) {
+                            tasks[i].remove();
+                        }
                     }
+                    window.remove();
                 }
-                window.remove();
+
             })
             desktop.appendChild(window);
         }

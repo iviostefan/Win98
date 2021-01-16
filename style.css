@@ -410,7 +410,8 @@ body, html {
     height: 140px;
     position: relative;
     background-color: #c0c0c0;
-    top: 250px;
+    z-index: 3000;
+    top: -300px;
     margin: auto;
     border-left: 2px solid #fff;
     border-top: 1px solid #fff;
