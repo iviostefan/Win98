@@ -114,6 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let header_img = Image(this.img);
 
             let wind_adress = Div("window-address");
+            let b = Image("https://i.ibb.co/Lh91Zjh/nav-bars.png");
+        //    wind_adress.appendChild(b);
             wind_adress.innerHTML = "A<u>d</u>dress";
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
@@ -227,6 +229,20 @@ document.addEventListener("DOMContentLoaded", function () {
             win_menu.appendChild(ul);
             
             let nav = Div("window-nav");
+            let n1 = Image("https://i.ibb.co/ZWk35Mc/back.png");
+            let n2 = Image("https://i.ibb.co/f2YhpRH/nav-for.png");
+            let n3 = Image("https://i.ibb.co/PGbtsgd/nav-up.png");
+            let b1 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n4 = Image("https://i.ibb.co/mSx3CvV/nav-cut.png");
+            let n5 = Image("https://i.ibb.co/Dz3PSDr/nav-cpy.png");
+            let n6 = Image("https://i.ibb.co/SBRM2jF/nav-past.png");
+            let b2 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n7 = Image("https://i.ibb.co/z7vQx8y/nav-undo.png");
+            let b3 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n8 = Image("https://i.ibb.co/0hHmmg3/nav-del.png");
+            let n9 = Image("https://i.ibb.co/QcHhW6D/nav-prop.png");
+            let b4 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n10 = Image("https://i.ibb.co/LZ60RKg/nav-vire.png");
             // let img1 = document.createElement("img");
             // img.setAttribute("src", "");
             // let img2 = document.createElement("img");
@@ -244,6 +260,20 @@ document.addEventListener("DOMContentLoaded", function () {
             // let img14 = document.createElement("img");
             // let img15 = document.createElement("img");
             // let img16 = document.createElement("img");
+            nav.appendChild(n1);
+            nav.appendChild(n2);
+            nav.appendChild(n3);
+            nav.appendChild(b1);
+            nav.appendChild(n4);
+            nav.appendChild(n5);
+            nav.appendChild(n6);
+            nav.appendChild(b2);
+            nav.appendChild(n7);
+            nav.appendChild(b3);
+            nav.appendChild(n8);
+            nav.appendChild(n9);
+            nav.appendChild(b4);
+            nav.appendChild(n10);
             
             window.appendChild(header);
             
