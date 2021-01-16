@@ -340,6 +340,7 @@ body, html {
     width: 100%;
     height: 22px;
     background-color: #c0c0c0;
+    border: 1px solid #fff;
     display: flex;
     padding-left: 12px;
     padding-top: 3px;
@@ -348,8 +349,18 @@ body, html {
 
 .addbar {
     background-color: #fff;
+    position: relative;
+    left: 3px;
+    top: -1px;
     width: 88%;
+    height: 20px;
     display: flex;
+}
+
+.addbar img {
+    width: 30px;
+    position: relative;
+    top: -1px;
 }
 
 .window-address span {
@@ -364,7 +375,7 @@ body, html {
 
 .backg-mycom {
     position: fixed;
-    top: 112px;
+    top: 115px;
     width: 200px;
 }
 
