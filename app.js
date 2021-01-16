@@ -17,12 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let start_menu = document.getElementById("start-menu");
     let task_icons = document.getElementById("taskbar-icons");
     start.addEventListener("click", function () {
-        if (start_menu.style.display == "none") {
-            start_menu.style.display = "block";
-        } else {
-            start_menu.style.display = "none";
+        if(!is_error) {
+            if (start_menu.style.display == "none") {
+                start_menu.style.display = "block";
+            } else {
+                start_menu.style.display = "none";
+            }
         }
-
     })
 
     let Render = (type, attr, value) => {
