@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let start_menu = document.getElementById("start-menu");
     let task_icons = document.getElementById("taskbar-icons");
     start.addEventListener("click", function () {
-        if(!is_error) {
+        if (!is_error) {
             if (start_menu.style.display == "none") {
                 start_menu.style.display = "block";
             } else {
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.img = img;
         }
         open() {
-            
+
             let window = Div("window", this.type);
             let header = Div("window-header");
             let header_img = Image(this.img);
@@ -137,29 +137,34 @@ document.addEventListener("DOMContentLoaded", function () {
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                     let flop = Image("https://i.ibb.co/WkSxgbm/mycomff.png");
                     flop.addEventListener("click", function () {
-                        console.log("click flop");
-                        is_error = true;
-                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
-                        win.show();
+                        if (!is_error) {
+                            is_error = true;
+                            let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "A:\\ is no accessible.<br>The device is not ready.", 2);
+                            win.show();
+                        }
                     })
                     list_icons.appendChild(flop);
                     let hdd = Image("https://i.ibb.co/8Dfv2Vy/comfc.png");
                     hdd.addEventListener("click", function () {
-                        list_icons.style.display = "none";
-                        let list_icons2 = Div("icons-comp");
-                        list_icons2.appendChild(Image("https://i.ibb.co/DDnMr4K/docs-icon.png"));
-                        list_icons2.appendChild(Image("https://i.ibb.co/rsvF7g4/pf-icon.png"));
-                        list_icons2.appendChild(Image("https://i.ibb.co/jwZ3dm1/wind-icon.png"));
-                        list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
-                        list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
-                        wind_content.appendChild(list_icons2);
+                        if (!is_error) {
+                            list_icons.style.display = "none";
+                            let list_icons2 = Div("icons-comp");
+                            list_icons2.appendChild(Image("https://i.ibb.co/DDnMr4K/docs-icon.png"));
+                            list_icons2.appendChild(Image("https://i.ibb.co/rsvF7g4/pf-icon.png"));
+                            list_icons2.appendChild(Image("https://i.ibb.co/jwZ3dm1/wind-icon.png"));
+                            list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
+                            list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
+                            wind_content.appendChild(list_icons2);
+                        }
                     })
                     list_icons.appendChild(hdd);
                     let cd = Image("https://i.ibb.co/mq7c1jn/compfcd.png");
                     cd.addEventListener("click", function () {
-                        is_error = true;
-                        let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
-                        win.show();
+                        if (!is_error) {
+                            is_error = true;
+                            let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
+                            win.show();
+                        }
                     })
                     list_icons.appendChild(cd);
                     list_icons.appendChild(Image("https://i.ibb.co/28PBBdN/compfcp.png"));
