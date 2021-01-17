@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     setInterval(getTime, 100);
     let is_error = false;
+    const err_s = () => {
+        var audio = document.getElementById("audio");
+        audio.play();
+    }
     let desktop = document.getElementById("win98");
     let start = document.getElementById("start");
     let start_menu = document.getElementById("start-menu");
@@ -22,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 start_menu.style.display = "none";
             }
-        }
+        } else err_s();
     })
     let Render = (type, attr, value) => {
         let obj = document.createElement(type);
@@ -45,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         obj.innerHTML = text;
         return obj;
     }
+
     class WindError {
         constructor(title, img, message, btns) {
             this.title = title;
@@ -79,6 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 let btn1 = document.createElement("button");
                 let btn2 = document.createElement("button");
                 btn1.innerHTML = "<u>R</u>etry";
+                btn1.addEventListener("click", function() {
+                    err_s();
+                })
                 btn2.innerHTML = "<b>C</b>ancel";
                 btn2.addEventListener("click", function () {
                     winderror.remove();
@@ -88,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 btns_div.appendChild(btn2);
             }
             winderror.appendChild(btns_div);
+            err_s();
             desktop.appendChild(winderror);
             console.log(document.getElementById(this.title));
             closeerr.addEventListener("click", function () {
@@ -205,11 +214,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
                             list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
                             wind_content.appendChild(list_icons2);
-                            n1.addEventListener("click", function() {
+                            n1.addEventListener("click", function () {
                                 list_icons2.style.display = "none";
                                 list_icons.style.display = "block";
                             })
-                        }
+                        } else err_s();
                     })
                     list_icons.appendChild(hdd);
                     let cd = Image("https://i.ibb.co/mq7c1jn/compfcd.png");
@@ -218,7 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             is_error = true;
                             let win = new WindError("My Computer", "https://i.ibb.co/RDTpHPQ/err.png", "D:\\ is no accessible.<br>The device is not ready.", 2);
                             win.show();
-                        }
+                        } else err_s();
                     })
                     list_icons.appendChild(cd);
                     list_icons.appendChild(Image("https://i.ibb.co/28PBBdN/compfcp.png"));
@@ -235,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         imgs.appendChild(Div("thumb1"));
                         imgs.appendChild(Div("thumb2"));
                         list_icons.appendChild(imgs);
-                        n1.addEventListener("click", function() {
+                        n1.addEventListener("click", function () {
                             imgs.style.display = "none";
                             folder.style.display = "block";
                         })
@@ -283,9 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
             add_sec.appendChild(add);
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
-
             window.appendChild(wind_content);
-
             let task = Div("task", this.type);
             task.addEventListener("click", function () {
                 if (!is_error) {
@@ -296,24 +303,16 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.classList.add("minimize");
                         window.classList.remove("zindex");
                     }
-                }
+                } else err_s();
             })
             let task_img = Image(this.img);
             task.appendChild(task_img);
             task_icons.appendChild(task);
-
-
-
-
-
-
-
-
             min.addEventListener("click", function () {
                 if (!is_error) {
                     window.classList.add("minimize");
                     window.classList.remove("zindex");
-                }
+                } else err_s();
             })
             close.addEventListener("click", function () {
                 if (!is_error) {
@@ -324,12 +323,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                     window.remove();
-                }
+                } else err_s();
             })
             desktop.appendChild(window);
         }
     }
-
     class Icon {
         constructor(name, logo) {
             this.name = name;
@@ -348,11 +346,9 @@ document.addEventListener("DOMContentLoaded", function () {
             desktop.appendChild(div);
         }
     }
-
     let icons_names = ["My Computer", "My Documents", "Internet Explorer", "Network", "Recycle Bin"]
     let logos = ["https://i.ibb.co/Fz7XL7z/my-computer.png", "https://i.ibb.co/TgXLNyp/my-docs.png",
         "https://i.ibb.co/bHmmSH9/internet.png", "https://i.ibb.co/1L9h6cV/net.png", "https://i.ibb.co/syBDpgj/rb.png"]
-
     for (let icon = 0; icon < 5; icon++) {
         let obj = new Icon(icons_names[icon], logos[icon]);
         obj.draw();
