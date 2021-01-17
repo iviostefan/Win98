@@ -355,6 +355,12 @@ body, html {
     font-size: 12px;
 }
 
+.addresss-text {
+    position: relative;
+    top: 3px;
+    left: -10px;
+}
+
 .addbar {
     background-color: #fff;
     position: relative;

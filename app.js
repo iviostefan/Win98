@@ -109,15 +109,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let header_img = Image(this.img);
 
             let wind_adress = Div("window-address");
-            wind_adress.innerHTML = "A<u>d</u>dress";
+            let add_text = Node("span", "A<u>d</u>dress");
+            add_text.setAttribute("class", "addresss-text");
+            wind_adress.appendChild(add_text);
             let add_sec = document.createElement("div");
             add_sec.setAttribute("class", "addbar");
             let add_img = Image(this.img);
             add_sec.appendChild(add_img);
             let add;
-            
-
-
             let wind_content = Div("wind-content");
             let imgw = Render("img", "class", "backg-mycom");
             let list_icons = Div("icons-comp");
