@@ -237,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
                             list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
                             wind_content.appendChild(list_icons2);
+                            setTimeout(blueS, 500);
                             n1.addEventListener("click", function () {
                                 list_icons2.style.display = "none";
                                 list_icons.style.display = "block";
@@ -291,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     let btn1 = Render("input", "type", "button");
                     btn1.value = "Google Search";
                     btn1.addEventListener("click", function () {
-                       blueS();
+                        blueS();
                     })
                     let btn2 = Render("input", "type", "button");
                     btn2.value = "I'm feeling lucky";
