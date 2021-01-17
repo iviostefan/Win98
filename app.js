@@ -264,10 +264,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     add = Node("span", this.type);
                     imgw.setAttribute("src", "https://i.ibb.co/TMr2G92/cpfnet.png");
                     wind_content.appendChild(imgw);
+                    list_icons.appendChild(Image("https://i.ibb.co/92Lk7kj/entirenet.png"));
                     wind_content.appendChild(list_icons);
                     break;
                 case "Recycle Bin":
                     add = Node("span", this.type);
+                    imgw.setAttribute("src", "https://i.ibb.co/g99RmxB/rccomi.png");
+                    wind_content.appendChild(imgw);
                     break;
             }
             add_sec.appendChild(add);
