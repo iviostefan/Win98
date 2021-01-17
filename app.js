@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("boot").style.display = "none";
         document.getElementById("win98").style.display = "block";
     }
-    //setTimeout(bootwin, 2000);
-    bootwin();
+    setTimeout(bootwin, 2000);
     const fill = (number) => number < 10 ? number = "0" + number : number;
     const getTime = () => {
         let date = new Date();
