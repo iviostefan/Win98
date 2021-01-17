@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         audio.play();
     }
     let desktop = document.getElementById("win98");
+    let start_bar = document.getElementById("start-bar");
     let start = document.getElementById("start");
     let start_menu = document.getElementById("start-menu");
     let task_icons = document.getElementById("taskbar-icons");
@@ -48,6 +49,28 @@ document.addEventListener("DOMContentLoaded", function () {
         let obj = document.createElement(type);
         obj.innerHTML = text;
         return obj;
+    }
+    const blueS = () => {
+        desktop.style.display = "none";
+        start_bar.style.display = "none";
+        err_s();
+        let blue = Div("bs");
+        blue.appendChild(Node("p", "Windows"));
+        blue.appendChild(Node("p", "A fatal excpetion 0E has occurred at 0028:C004D86F in VXD VFAT(01)<br>The current application will be termindated."));
+        let ul = document.createElement("ul");
+        ul.appendChild(Node("li", "Press any key taskbar-icons terminate the current application."));
+        ul.appendChild(Node("li", "Press CTRLT+ALT+DEL to restart your computer. You will lose any unsaved information in all applications."));
+        blue.appendChild(ul);
+        blue.appendChild(Node("p", "Press any key to continue"));
+        let bt = document.createElement("button");
+        bt.innerHTML = "Restart";
+        blue.appendChild(bt);
+        bt.addEventListener("click", function () {
+            blue.remove();
+            start_bar.style.display = "block";
+            desktop.style.display = "block";
+        })
+        document.getElementsByTagName("body")[0].appendChild(blue);
     }
 
     class WindError {
@@ -84,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let btn1 = document.createElement("button");
                 let btn2 = document.createElement("button");
                 btn1.innerHTML = "<u>R</u>etry";
-                btn1.addEventListener("click", function() {
+                btn1.addEventListener("click", function () {
                     err_s();
                 })
                 btn2.innerHTML = "<b>C</b>ancel";
@@ -267,6 +290,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     let btn = Div("btns-google");
                     let btn1 = Render("input", "type", "button");
                     btn1.value = "Google Search";
+                    btn1.addEventListener("click", function () {
+                       blueS();
+                    })
                     let btn2 = Render("input", "type", "button");
                     btn2.value = "I'm feeling lucky";
                     btn.appendChild(btn1);
@@ -280,8 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     add = Node("span", this.type);
                     imgw.setAttribute("src", "https://i.ibb.co/TMr2G92/cpfnet.png");
                     wind_content.appendChild(imgw);
-                    list_icons.appendChild(Image("https://i.ibb.co/92Lk7kj/entirenet.png"));
-                    wind_content.appendChild(list_icons);
+                    setTimeout(blueS, 400);
                     break;
                 case "Recycle Bin":
                     add = Node("span", this.type);
