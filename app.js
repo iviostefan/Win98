@@ -25,32 +25,27 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     })
-
     let Render = (type, attr, value) => {
         let obj = document.createElement(type);
         obj.setAttribute(attr, value);
         return obj;
     }
-
     let Image = (value) => {
         let obj = document.createElement("img");
         obj.setAttribute("src", value);
         return obj;
     }
-
     let Div = (value1, value2) => {
         let obj = document.createElement("div");
         obj.setAttribute("class", value1);
         value2 == null ? obj.setAttribute("class", value1) : obj.setAttribute("id", value2);
         return obj;
     }
-
     let Node = (type, text) => {
         let obj = document.createElement(type);
         obj.innerHTML = text;
         return obj;
     }
-
     class WindError {
         constructor(title, img, message, btns) {
             this.title = title;
@@ -74,7 +69,6 @@ document.addEventListener("DOMContentLoaded", function () {
             mess.innerHTML = this.message;
             content.appendChild(mess);
             winderror.appendChild(content);
-
             let btns_div = document.createElement("div");
             if (this.btns === 1) {
                 btns_div.setAttribute("class", "winderror-button");
@@ -103,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         }
     }
-
     class Window {
         constructor(title, type, img) {
             this.title = title;
@@ -111,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.img = img;
         }
         open() {
-
             let window = Div("window", this.type);
             let header = Div("window-header");
             let header_img = Image(this.img);
@@ -122,10 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
             add_sec.setAttribute("class", "addbar");
             let add_img = Image(this.img);
             add_sec.appendChild(add_img);
-            let add = Node("span", this.type);
-            add_sec.appendChild(add);
-            wind_adress.appendChild(add_sec);
-            window.appendChild(wind_adress);
+            let add;
+            
 
 
             let wind_content = Div("wind-content");
@@ -136,6 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "My Computer":
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
                     let flop = Image("https://i.ibb.co/WkSxgbm/mycomff.png");
+                    add = Node("span", this.type);
                     flop.addEventListener("click", function () {
                         if (!is_error) {
                             is_error = true;
@@ -172,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
                     let folder = Image("https://i.ibb.co/bJSCHnV/mypicico.png");
+                    add = Node("span", this.type);
                     folder.addEventListener("click", function () {
                         folder.style.display = "none";
                         let imgs = Div("pictures");
@@ -182,13 +174,19 @@ document.addEventListener("DOMContentLoaded", function () {
                     list_icons.appendChild(folder);
                     break;
                 case "Internet Explorer":
+                    add = Node("span", "http://wwww.google.com/");
                     break;
                 case "Network":
+                    add = Node("span", this.type);
                     imgw.setAttribute("src", "https://i.ibb.co/TMr2G92/cpfnet.png");
                     break;
                 case "Recycle Bin":
+                    add = Node("span", this.type);
                     break;
             }
+            add_sec.appendChild(add);
+            wind_adress.appendChild(add_sec);
+            window.appendChild(wind_adress);
             wind_content.appendChild(imgw);
             wind_content.appendChild(list_icons);
             window.appendChild(wind_content);
@@ -292,7 +290,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                     window.remove();
                 }
-
             })
             desktop.appendChild(window);
         }
