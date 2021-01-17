@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
             win_menu.appendChild(logo);
             window.appendChild(win_menu);
             let nav = Div("window-nav");
-            let n1 = Image("https://i.ibb.co/ZWk35Mc/back.png");
+            let n1 = Image("https://i.ibb.co/m83t0qg/bacjuti.png");
             let n2 = Image("https://i.ibb.co/f2YhpRH/nav-for.png");
             let n3 = Image("https://i.ibb.co/PGbtsgd/nav-up.png");
             let b1 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
@@ -206,6 +206,10 @@ document.addEventListener("DOMContentLoaded", function () {
                             list_icons2.appendChild(Image("https://i.ibb.co/PcZ8hjG/ax-ico.png"));
                             list_icons2.appendChild(Image("https://i.ibb.co/BnxjzzJ/ax2-ico.png"));
                             wind_content.appendChild(list_icons2);
+                            n1.addEventListener("click", function() {
+                                list_icons2.style.display = "none";
+                                list_icons.style.display = "block";
+                            })
                         }
                     })
                     list_icons.appendChild(hdd);
@@ -232,6 +236,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         imgs.appendChild(Div("thumb1"));
                         imgs.appendChild(Div("thumb2"));
                         list_icons.appendChild(imgs);
+                        n1.addEventListener("click", function() {
+                            imgs.style.display = "none";
+                            folder.style.display = "block";
+                        })
                     })
                     list_icons.appendChild(folder);
                     wind_content.appendChild(imgw);
@@ -240,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 case "Internet Explorer":
                     add = Node("span", "http://wwww.google.com/");
                     let webpage = Div("webpage");
-                    
+
                     let google = Image("https://cdn.elg.im/google1998/google.jpg");
                     let header = Div("webpage-header");
                     header.appendChild(google);
@@ -276,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function () {
             add_sec.appendChild(add);
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
-            
+
             window.appendChild(wind_content);
 
             let task = Div("task", this.type);
