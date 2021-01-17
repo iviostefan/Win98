@@ -107,7 +107,69 @@ document.addEventListener("DOMContentLoaded", function () {
             let window = Div("window", this.type);
             let header = Div("window-header");
             let header_img = Image(this.img);
-
+            let close = Render("span", "class", "header-close");
+            close.innerHTML = "x";
+            header.appendChild(close);
+            let min = Render("span", "class", "header-minimize");
+            min.innerHTML = "_";
+            header.appendChild(min);
+            let resize = Render("span", "class", "header-resize");
+            resize.innerHTML = "◳";
+            header.appendChild(resize);
+            header.appendChild(header_img);
+            let span = Render("span", "class", "window-header-p");
+            span.innerHTML = this.title;
+            header.appendChild(span);
+            window.appendChild(header);
+            let win_menu = Div("window-menu");
+            let ul = document.createElement("ul");
+            let file = Node("li", "<u>F</u>ile");
+            ul.appendChild(file);
+            let edit = Node("li", "<u>E</u>dit");
+            ul.appendChild(edit);
+            let view = Node("li", "<u>V</u>iew");
+            ul.appendChild(view);
+            let go = Node("li", "<u>G</u>o");
+            ul.appendChild(go);
+            let favorites = Node("li", "<u>F</u>avorites");
+            ul.appendChild(favorites);
+            let help = Node("li", "<u>H</u>elp");
+            ul.appendChild(help);
+            win_menu.appendChild(ul);
+            let logo = Image("https://i.ibb.co/4WdrJQ5/logo.png");
+            logo.setAttribute("class", "logo");
+            win_menu.appendChild(logo);
+            window.appendChild(win_menu);
+            let nav = Div("window-nav");
+            let n1 = Image("https://i.ibb.co/ZWk35Mc/back.png");
+            let n2 = Image("https://i.ibb.co/f2YhpRH/nav-for.png");
+            let n3 = Image("https://i.ibb.co/PGbtsgd/nav-up.png");
+            let b1 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n4 = Image("https://i.ibb.co/mSx3CvV/nav-cut.png");
+            let n5 = Image("https://i.ibb.co/Dz3PSDr/nav-cpy.png");
+            let n6 = Image("https://i.ibb.co/SBRM2jF/nav-past.png");
+            let b2 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n7 = Image("https://i.ibb.co/z7vQx8y/nav-undo.png");
+            let b3 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n8 = Image("https://i.ibb.co/0hHmmg3/nav-del.png");
+            let n9 = Image("https://i.ibb.co/QcHhW6D/nav-prop.png");
+            let b4 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
+            let n10 = Image("https://i.ibb.co/LZ60RKg/nav-vire.png");
+            nav.appendChild(n1);
+            nav.appendChild(n2);
+            nav.appendChild(n3);
+            nav.appendChild(b1);
+            nav.appendChild(n4);
+            nav.appendChild(n5);
+            nav.appendChild(n6);
+            nav.appendChild(b2);
+            nav.appendChild(n7);
+            nav.appendChild(b3);
+            nav.appendChild(n8);
+            nav.appendChild(n9);
+            nav.appendChild(b4);
+            nav.appendChild(n10);
+            window.appendChild(nav);
             let wind_adress = Div("window-address");
             let add_text = Node("span", "A<u>d</u>dress");
             add_text.setAttribute("class", "addresss-text");
@@ -120,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
             let wind_content = Div("wind-content");
             let imgw = Render("img", "class", "backg-mycom");
             let list_icons = Div("icons-comp");
-
             switch (this.type) {
                 case "My Computer":
                     imgw.setAttribute("src", "https://i.ibb.co/2S75bpY/mycompf.png");
@@ -158,6 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                     list_icons.appendChild(cd);
                     list_icons.appendChild(Image("https://i.ibb.co/28PBBdN/compfcp.png"));
+                    wind_content.appendChild(imgw);
+                    wind_content.appendChild(list_icons);
                     break;
                 case "My Documents":
                     imgw.setAttribute("src", "https://i.ibb.co/MRvPPm4/mydocf.png");
@@ -171,13 +234,37 @@ document.addEventListener("DOMContentLoaded", function () {
                         list_icons.appendChild(imgs);
                     })
                     list_icons.appendChild(folder);
+                    wind_content.appendChild(imgw);
+                    wind_content.appendChild(list_icons);
                     break;
                 case "Internet Explorer":
                     add = Node("span", "http://wwww.google.com/");
+                    let webpage = Div("webpage");
+                    
+                    let google = Image("https://cdn.elg.im/google1998/google.jpg");
+                    let header = Div("webpage-header");
+                    header.appendChild(google);
+                    let search = Div("search");
+                    webpage.appendChild(header);
+                    search.appendChild(Node("p", "Search the web using Google!"));
+                    search.appendChild(Render("input", "class", "input-search"));
+                    let btn = Div("btns-google");
+                    let btn1 = Render("input", "type", "button");
+                    btn1.value = "Google Search";
+                    let btn2 = Render("input", "type", "button");
+                    btn2.value = "I'm feeling lucky";
+                    btn.appendChild(btn1);
+                    btn.appendChild(btn2);
+                    search.appendChild(btn);
+                    webpage.appendChild(search);
+                    webpage.appendChild(Node("p", "Copyright &copy;1998 Google Inc."));
+                    wind_content.appendChild(webpage);
                     break;
                 case "Network":
                     add = Node("span", this.type);
                     imgw.setAttribute("src", "https://i.ibb.co/TMr2G92/cpfnet.png");
+                    wind_content.appendChild(imgw);
+                    wind_content.appendChild(list_icons);
                     break;
                 case "Recycle Bin":
                     add = Node("span", this.type);
@@ -186,8 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
             add_sec.appendChild(add);
             wind_adress.appendChild(add_sec);
             window.appendChild(wind_adress);
-            wind_content.appendChild(imgw);
-            wind_content.appendChild(list_icons);
+            
             window.appendChild(wind_content);
 
             let task = Div("task", this.type);
@@ -205,74 +291,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let task_img = Image(this.img);
             task.appendChild(task_img);
             task_icons.appendChild(task);
-            let close = Render("span", "class", "header-close");
-            close.innerHTML = "x";
-            header.appendChild(close);
-            let min = Render("span", "class", "header-minimize");
-            min.innerHTML = "_";
-            header.appendChild(min);
-            let resize = Render("span", "class", "header-resize");
-            resize.innerHTML = "◳";
-            header.appendChild(resize);
-            header.appendChild(header_img);
-            let span = Render("span", "class", "window-header-p");
-            span.innerHTML = this.title;
-            header.appendChild(span);
-            let logo = Image("https://i.ibb.co/4WdrJQ5/logo.png");
-            logo.setAttribute("class", "logo");
-            let win_menu = Div("window-menu");
 
-            let ul = document.createElement("ul");
 
-            let file = Node("li", "<u>F</u>ile");
-            ul.appendChild(file);
-            let edit = Node("li", "<u>E</u>dit");
-            ul.appendChild(edit);
-            let view = Node("li", "<u>V</u>iew");
-            ul.appendChild(view);
-            let go = Node("li", "<u>G</u>o");
-            ul.appendChild(go);
-            let favorites = Node("li", "<u>F</u>avorites");
-            ul.appendChild(favorites);
-            let help = Node("li", "<u>H</u>elp");
-            ul.appendChild(help);
-            win_menu.appendChild(ul);
 
-            let nav = Div("window-nav");
-            let n1 = Image("https://i.ibb.co/ZWk35Mc/back.png");
-            let n2 = Image("https://i.ibb.co/f2YhpRH/nav-for.png");
-            let n3 = Image("https://i.ibb.co/PGbtsgd/nav-up.png");
-            let b1 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
-            let n4 = Image("https://i.ibb.co/mSx3CvV/nav-cut.png");
-            let n5 = Image("https://i.ibb.co/Dz3PSDr/nav-cpy.png");
-            let n6 = Image("https://i.ibb.co/SBRM2jF/nav-past.png");
-            let b2 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
-            let n7 = Image("https://i.ibb.co/z7vQx8y/nav-undo.png");
-            let b3 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
-            let n8 = Image("https://i.ibb.co/0hHmmg3/nav-del.png");
-            let n9 = Image("https://i.ibb.co/QcHhW6D/nav-prop.png");
-            let b4 = Image("https://i.ibb.co/xzqz2tw/nav-bar.png");
-            let n10 = Image("https://i.ibb.co/LZ60RKg/nav-vire.png");
-            nav.appendChild(n1);
-            nav.appendChild(n2);
-            nav.appendChild(n3);
-            nav.appendChild(b1);
-            nav.appendChild(n4);
-            nav.appendChild(n5);
-            nav.appendChild(n6);
-            nav.appendChild(b2);
-            nav.appendChild(n7);
-            nav.appendChild(b3);
-            nav.appendChild(n8);
-            nav.appendChild(n9);
-            nav.appendChild(b4);
-            nav.appendChild(n10);
 
-            window.appendChild(header);
 
-            win_menu.appendChild(logo);
-            window.appendChild(win_menu);
-            window.appendChild(nav);
+
+
+
             min.addEventListener("click", function () {
                 if (!is_error) {
                     window.classList.add("minimize");
